@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quizzler_app/core/constants/images.dart';
@@ -48,11 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 200,
               width: 200,
             ),
-            Lottie.asset(
-              Images.loader,
-              height: 200,
-              width: 200,
-            )
+            Lottie.asset(Images.loader, height: 200, width: 200)
           ],
         ),
       ),
