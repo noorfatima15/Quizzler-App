@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler_app/core/constants/typography.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -13,7 +14,7 @@ class CustomButton extends StatelessWidget {
       color: color ?? Colors.blue,
       padding: EdgeInsets.zero,
       height: 40,
-      child: Text(text),
+      child: Text(text, style: buttonTextStyle),
     );
   }
 }
