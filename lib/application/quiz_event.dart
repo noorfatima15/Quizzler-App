@@ -4,12 +4,14 @@ abstract class QuizEvent {}
 
 class OnPressedTrue extends QuizEvent {
   final bool answer;
-  OnPressedTrue({required this.answer});
+  final BuildContext context;
+  OnPressedTrue({required this.answer, required this.context});
 }
 
 class OnPressedFalse extends QuizEvent {
   final bool answer;
-  OnPressedFalse({required this.answer});
+  final BuildContext context;
+  OnPressedFalse({required this.answer, required this.context});
 }
 
 class OnPressedReset extends QuizEvent {}

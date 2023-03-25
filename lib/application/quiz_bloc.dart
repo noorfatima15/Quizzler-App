@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizzler_app/model/quiz.dart';
 part 'quiz_event.dart';
@@ -12,14 +13,36 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   onPressedTrue(OnPressedTrue event, Emitter<QuizState> emit) {
     if (event.answer == state.quizList[state.questionNumber].answer) {
       emit(state.copyWith(
-        // questionNumber: state.questionNumber + 1,
         score: state.score + 1,
-        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
+        questionNumber: state.questionNumber + 1,
+        isFinished: state.questionNumber == state.quizList.length - 1 ? true : false,
       ));
     } else {
       emit(state.copyWith(
-        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
+        questionNumber: state.questionNumber + 1,
+        isFinished: state.questionNumber == state.quizList.length - 1 ? true : false,
       ));
+      if (state.isFinished) {
+        showDialog(
+            context: event.context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('You have finished the quiz!'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Center(child: Text('OK')))
+                ],
+              );
+            });
+        emit(state.copyWith(
+          score: 0,
+          questionNumber: 0,
+          isFinished: false,
+        ));
+      }
     }
   }
 
@@ -27,11 +50,35 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
     if (event.answer == state.quizList[state.questionNumber].answer) {
       emit(state.copyWith(
         score: state.score + 1,
-        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
+        questionNumber: state.questionNumber + 1,
+        isFinished: state.questionNumber == state.quizList.length - 1 ? true : false,
       ));
     } else {
       emit(state.copyWith(
-        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
+        questionNumber: state.questionNumber + 1,
+        isFinished: state.questionNumber == state.quizList.length - 1 ? true : false,
+      ));
+    }
+    if (state.isFinished) {
+      showDialog(
+          context: event.context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('You have finished the quiz!'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('OK'))
+              ],
+            );
+          });
+
+      emit(state.copyWith(
+        score: 0,
+        questionNumber: 0,
+        isFinished: false,
       ));
     }
   }

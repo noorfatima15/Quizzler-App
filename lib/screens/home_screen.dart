@@ -48,14 +48,14 @@ class HomeScreen extends StatelessWidget {
                     CustomButton(
                       text: 'True',
                       onPressed: () {
-                        context.read<QuizBloc>().add(OnPressedTrue(answer: true));
+                        context.read<QuizBloc>().add(OnPressedTrue(answer: true, context: context));
                       },
                     ),
                     CustomButton(
                       text: 'False',
                       color: Colors.red,
                       onPressed: () {
-                        context.read<QuizBloc>().add(OnPressedFalse(answer: false));
+                        context.read<QuizBloc>().add(OnPressedFalse(answer: false, context: context));
                       },
                     ),
                   ],
