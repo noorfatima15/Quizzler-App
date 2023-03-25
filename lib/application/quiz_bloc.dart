@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizzler_app/model/quiz.dart';
-
 part 'quiz_event.dart';
 part 'quiz_state.dart';
 
