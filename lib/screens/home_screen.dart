@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Score: ${state.score}', style: scoreOptions),
-                    Text('Question: ${state.questionNumber + 1}/10', style: scoreOptions),
+                    Text('Question: ${state.questionNumber + 1}/${state.quizList.length}', style: scoreOptions),
                   ],
                 ),
                 Row(

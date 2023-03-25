@@ -12,12 +12,13 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   onPressedTrue(OnPressedTrue event, Emitter<QuizState> emit) {
     if (event.answer == state.quizList[state.questionNumber].answer) {
       emit(state.copyWith(
-        questionNumber: state.questionNumber + 1,
+        // questionNumber: state.questionNumber + 1,
         score: state.score + 1,
+        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
       ));
     } else {
       emit(state.copyWith(
-        questionNumber: state.questionNumber + 1,
+        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
       ));
     }
   }
@@ -25,12 +26,12 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   onPressedFalse(OnPressedFalse event, Emitter<QuizState> emit) {
     if (event.answer == state.quizList[state.questionNumber].answer) {
       emit(state.copyWith(
-        questionNumber: state.questionNumber + 1,
         score: state.score + 1,
+        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
       ));
     } else {
       emit(state.copyWith(
-        questionNumber: state.questionNumber + 1,
+        questionNumber: state.questionNumber < state.quizList.length - 1 ? state.questionNumber + 1 : 0,
       ));
     }
   }

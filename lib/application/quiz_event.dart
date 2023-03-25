@@ -11,3 +11,5 @@ class OnPressedFalse extends QuizEvent {
   final bool answer;
   OnPressedFalse({required this.answer});
 }
+
+class OnPressedReset extends QuizEvent {}
