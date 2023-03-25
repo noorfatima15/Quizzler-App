@@ -5,6 +5,12 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+        child: MaterialButton(
+      onPressed: () {},
+      padding: EdgeInsets.zero,
+      height: 50,
+      child: Text('Button'),
+    ));
   }
 }
