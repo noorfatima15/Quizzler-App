@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizzler_app/core/constants/typography.dart';
+import 'package:quizzler_app/core/widgets/custom_button.dart';
 import 'package:quizzler_app/model/quiz.dart';
 part 'quiz_event.dart';
 part 'quiz_state.dart';
@@ -27,13 +29,19 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
             context: event.context,
             builder: (context) {
               return AlertDialog(
-                title: const Text('You have finished the quiz!'),
+                title: Column(
+                  children: const [
+                    Text('You have finished the quiz!', style: dialogContent),
+                  ],
+                ),
                 actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Center(child: Text('OK')))
+                  Center(
+                      child: CustomButton(
+                    text: 'OK',
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ))
                 ],
               );
             });
@@ -64,17 +72,22 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
           context: event.context,
           builder: (context) {
             return AlertDialog(
-              title: const Text('You have finished the quiz!'),
+              title: Column(
+                children: const [
+                  Text('You have finished the quiz!', style: dialogContent),
+                ],
+              ),
               actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text('OK'))
+                Center(
+                    child: CustomButton(
+                  text: 'OK',
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ))
               ],
             );
           });
-
       emit(state.copyWith(
         score: 0,
         questionNumber: 0,
